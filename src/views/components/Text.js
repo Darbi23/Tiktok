@@ -3,19 +3,14 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import COLORS from '../../const/colors';
 
-const Input = ({ 
+const Text = ({ 
   label,
-  iconName, 
-  error, 
-  password, 
-  type,
-  onFocus = () => {}, 
-  ...props
+  iconName
 }) => {
   const [ isFocused, setIsFocused ] = React.useState(false); 
   const [ hidePassword, setHidePassword ] = React.useState(password);
   return (
-    <View style={{ marginBottom: 10 }}> 
+    <View style={{ marginBottom: 25 }}> 
       <Text style={styles.label}>{label}</Text>
       <View 
         style={[
@@ -28,9 +23,8 @@ const Input = ({
             : COLORS.light 
           }
         ]}>
-        <Icon name={iconName} type={type} style={{ fontSize: 22, color: COLORS.darkblue, marginRight: 10 }}/>
+        <Icon name={iconName} style={{ fontSize: 22, color: COLORS.darkblue, marginRight: 10 }}/>
         <TextInput 
-          autoCapitalize='none'
           secureTextEntry={hidePassword}
           autoCorrect={false} 
           onFocus={() => {
@@ -51,11 +45,6 @@ const Input = ({
           />
         )}
       </View>
-      { error && (
-        <Text style={{ color: COLORS.red, fontSize: 12, marginTop: 7 }}>
-          {error}
-        </Text>
-      )}
     </View>
   );
 };
@@ -76,4 +65,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Input;
+export default Text;
