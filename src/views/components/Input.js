@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { Icon as Ico } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import COLORS from '../../const/colors';
 
@@ -14,6 +15,7 @@ const Input = ({
 }) => {
   const [ isFocused, setIsFocused ] = React.useState(false); 
   const [ hidePassword, setHidePassword ] = React.useState(password);
+
   return (
     <View style={{ marginBottom: 10 }}> 
       <Text style={styles.label}>{label}</Text>

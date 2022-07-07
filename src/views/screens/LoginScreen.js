@@ -1,20 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
-import { Alert, SafeAreaView, ScrollView, Text, View, Keyboard } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, Text, View, Keyboard, StyleSheet } from 'react-native';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Loader from '../components/Loader';
 import COLORS from '../../const/colors';
 
 const LoginScreen = ({ navigation }) => {
-  const [ inputs, setInputs ] = React.useState({
-    email: '',
-    fullname: '',
-    phone: '',
-    password: ''
-  });
   const [ errors, setErrors ] = React.useState({});
   const [loading, setLoading] = React.useState(false);
+  const [ inputs, setInputs ] = React.useState({
+    email: '',
+    password: ''
+  });
+
   const validate = () => {
     Keyboard.dismiss();
     let valid = true;
@@ -22,7 +21,6 @@ const LoginScreen = ({ navigation }) => {
       handleError('Please input an email', 'email');
       valid = false;
     } 
-
     if(!inputs.password) {
       valid = false;
       handleError('Please input password', 'password');
@@ -89,12 +87,7 @@ const LoginScreen = ({ navigation }) => {
         <Button title='Login' onPress={validate}/>
         <Text 
           onPress={() => navigation.navigate('RegistrationScreen')}
-          style={{ 
-            color: COLORS.black, 
-            textAlign: 'center', 
-            fontSize: 16, 
-            fontWeight: 'bold'  
-          }}>
+          style={styles.text}>
           Don't have an account ? Register
         </Text>
       </View>
@@ -102,5 +95,14 @@ const LoginScreen = ({ navigation }) => {
     </SafeAreaView>
   )
 };
+
+const styles = StyleSheet.create({ 
+  text: {
+    color: COLORS.black, 
+    textAlign: 'center', 
+    fontSize: 16, 
+    fontWeight: 'bold'  
+  }
+});
 
 export default LoginScreen;

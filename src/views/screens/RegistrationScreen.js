@@ -9,14 +9,16 @@ import UserContext from '../context/UserContext';
 
 const RegistrationScreen = ({ navigation }) => {
   const { data, submitData } = useContext(UserContext);
+  const [ errors, setErrors ] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+
   const [ inputs, setInputs ] = React.useState({
     email: '',
     fullname: '',
     phone: '',
     password: ''
   });
-  const [ errors, setErrors ] = React.useState({});
-  const [loading, setLoading] = React.useState(false);
+
   const validate = () => {
     Keyboard.dismiss();
     let valid = true;
@@ -58,7 +60,7 @@ const RegistrationScreen = ({ navigation }) => {
       } catch (err) {
         Alert.alert("Error", 'Something went wrong')
       }
-    }, 3000);
+    }, 2000);
   };
 
   const handleOnChange = (text, input) => {
@@ -132,7 +134,6 @@ const RegistrationScreen = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-  
 };
 
 export default RegistrationScreen;

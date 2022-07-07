@@ -3,11 +3,9 @@ import React, { useContext } from 'react';
 import { Alert, Keyboard, SafeAreaView, ScrollView, Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import COLORS from '../../const/colors';
 import Input from '../components/Input';
-import Button from '../components/Button';
 import Loader from '../components/Loader';
 import UserContext from '../context/UserContext';
 import { LinearGradient } from 'expo-linear-gradient';
-
 
 const EditProfileScreen = ({ navigation }) => {
   const { data, submitData } = useContext(UserContext);
@@ -67,7 +65,7 @@ const EditProfileScreen = ({ navigation }) => {
       } catch (err) {
         Alert.alert("Error", 'Something went wrong')
       }
-    }, 3000);
+    }, 2000);
   };
 
   const handleOnChange = (text, input) => {
