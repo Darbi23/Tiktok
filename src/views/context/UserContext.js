@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const UserContext = React.createContext(null);
 
-export const UserProvider = ({ children}) => {
+export const UserProvider = ({ children }) => {
   const [data, setUserData] = useState([]);
 
   const submitData = (newData) => {
@@ -10,7 +10,7 @@ export const UserProvider = ({ children}) => {
   };
 
   return (
-    <UserContext.Provider value={{ data, submitData }}> 
+    <UserContext.Provider value={{ data, submitData }}>
       {children}
     </UserContext.Provider>
   );
